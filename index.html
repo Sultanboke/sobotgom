@@ -273,6 +273,62 @@ font-weight:800;
 color:#e50914;
 text-decoration:none;
 }
+.access-box{
+background:#171717;
+border:1px solid #2a2a2a;
+border-radius:18px;
+padding:18px;
+margin:18px;
+}
+
+.access-box h3{
+margin:0;
+font-size:20px;
+color:#fff;
+}
+
+.access-box p{
+margin:8px 0 16px;
+font-size:14px;
+color:#9a9a9a;
+}
+
+.access-form{
+display:flex;
+gap:10px;
+}
+
+.access-form input{
+flex:1;
+height:48px;
+background:#111;
+border:1px solid #333;
+border-radius:12px;
+padding:0 15px;
+color:#fff;
+font-size:15px;
+outline:none;
+}
+
+.access-form input:focus{
+border-color:#e50914;
+}
+
+.access-form button{
+padding:0 22px;
+border:none;
+border-radius:12px;
+background:#e50914;
+color:#fff;
+font-weight:700;
+cursor:pointer;
+}
+
+#accessMsg{
+margin-top:12px;
+font-size:14px;
+color:#bbb;
+}
   
   
 </style>
@@ -311,7 +367,32 @@ XFREEBOKEP
 ⚠️ Disclaimer
 </a>
 
+  
 </div>
+
+<!-- ACCESS CODE -->
+<div class="access-box">
+
+<h3>🔐 Access Collection</h3>
+
+<p>Enter your collection code to unlock hidden content.</p>
+
+<div class="access-form">
+
+<input
+type="text"
+id="accessCode"
+placeholder="Enter Access Code">
+
+<button id="unlockBtn">
+Unlock
+</button>
+
+</div>
+
+<div id="accessMsg"></div>
+
+</div>  
 
   
 <div class="announcement">
