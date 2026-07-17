@@ -778,6 +778,22 @@ function loadHistats(){
 setTimeout(loadHistats, 1500);
 
 })();  
+
+document.getElementById("unlockBtn").onclick = async () => {
+
+const code = document.getElementById("accessCode").value.trim().toUpperCase();
+
+if(code === "ID2026"){
+
+// nanti kita panggil data Indo di sini
+
+}else{
+
+document.getElementById("accessMsg").textContent="❌ Invalid Access Code";
+
+}
+
+};  
   
 </script>
 
