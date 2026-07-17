@@ -273,61 +273,57 @@ font-weight:800;
 color:#e50914;
 text-decoration:none;
 }
-.access-box{
-background:#171717;
-border:1px solid #2a2a2a;
-border-radius:18px;
-padding:18px;
-margin:18px;
+.access-inline{
+margin-top:18px;
 }
 
-.access-box h3{
-margin:0;
-font-size:20px;
-color:#fff;
-}
-
-.access-box p{
-margin:8px 0 16px;
-font-size:14px;
-color:#9a9a9a;
-}
-
-.access-form{
+.access-input{
 display:flex;
-gap:10px;
+align-items:center;
+background:#161616;
+border:1px solid #2b2b2b;
+border-radius:14px;
+overflow:hidden;
+height:48px;
 }
 
-.access-form input{
+.access-input input{
 flex:1;
-height:48px;
-background:#111;
-border:1px solid #333;
-border-radius:12px;
-padding:0 15px;
+height:100%;
+background:transparent;
+border:none;
+outline:none;
+padding:0 16px;
 color:#fff;
 font-size:15px;
-outline:none;
 }
 
-.access-form input:focus{
-border-color:#e50914;
+.access-input input::placeholder{
+color:#777;
 }
 
-.access-form button{
-padding:0 22px;
+.access-input button{
+height:38px;
+margin-right:6px;
+padding:0 18px;
 border:none;
-border-radius:12px;
+border-radius:10px;
 background:#e50914;
 color:#fff;
 font-weight:700;
+font-size:14px;
 cursor:pointer;
+transition:.2s;
+}
+
+.access-input button:hover{
+background:#ff1f2d;
 }
 
 #accessMsg{
-margin-top:12px;
-font-size:14px;
-color:#bbb;
+margin-top:8px;
+font-size:13px;
+color:#999;
 }
   
   
@@ -356,6 +352,25 @@ XFREEBOKEP
 
 <p>Update setiap hari</p>
 </section>
+
+<div class="access-inline">
+
+<div class="access-input">
+
+<input
+type="text"
+id="accessCode"
+placeholder="🔑 Enter Access Code">
+
+<button id="unlockBtn">
+Go
+</button>
+
+</div>
+
+<div id="accessMsg"></div>
+
+</div>  
   
 <div class="top-menu">
 
@@ -366,34 +381,8 @@ XFREEBOKEP
 <a href="https://xfreebokep.xyz/Disclaimer/" class="menu-btn">
 ⚠️ Disclaimer
 </a>
-
   
 </div>
-
-<!-- ACCESS CODE -->
-<div class="access-box">
-
-<h3>🔐 Access Collection</h3>
-
-<p>Enter your collection code to unlock hidden content.</p>
-
-<div class="access-form">
-
-<input
-type="text"
-id="accessCode"
-placeholder="Enter Access Code">
-
-<button id="unlockBtn">
-Unlock
-</button>
-
-</div>
-
-<div id="accessMsg"></div>
-
-</div>  
-
   
 <div class="announcement">
 📢 New Collection Added Today • Check The Latest Updates Below!
@@ -779,13 +768,25 @@ setTimeout(loadHistats, 1500);
 
 })();  
 
-document.getElementById("unlockBtn").onclick = async () => {
+document.getElementById("unlockBtn").onclick = unlockCollection;
 
-const code = document.getElementById("accessCode").value.trim().toUpperCase();
+document.getElementById("accessCode").addEventListener("keypress",function(e){
 
-if(code === "ID2026"){
+if(e.key==="Enter"){
+unlockCollection();
+}
 
-// nanti kita panggil data Indo di sini
+});
+
+function unlockCollection(){
+
+const code=document.getElementById("accessCode").value.trim().toUpperCase();
+
+if(code==="ID2026"){
+
+// Panggil data Indo di sini
+
+document.getElementById("accessMsg").textContent="✅ Access Granted";
 
 }else{
 
@@ -793,7 +794,7 @@ document.getElementById("accessMsg").textContent="❌ Invalid Access Code";
 
 }
 
-};  
+}
   
 </script>
 
