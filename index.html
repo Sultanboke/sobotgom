@@ -744,9 +744,8 @@ favoriteMode = false;
 
 render(
 items.filter(x=>
-(x.title||"").toLowerCase().includes(q)
+(x.title||"").toLowerCase().startsWith(q)
 )
-
 );
 
 }
