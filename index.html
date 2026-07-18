@@ -431,35 +431,69 @@ let currentPage = 1;
 let favoriteMode = false;
 let searchMode = false;
 
+function loadJapan(){
+
 Promise.allSettled([
-    fetch("databkp/zoxo2.json").then(r => r.json()),
-    fetch("databkp/zoxo1.json").then(r => r.json()),
-    fetch("databkp/zoxo3.json").then(r => r.json()),
-    fetch("databkp/zoxo4.json").then(r => r.json()),
-    fetch("databkp/zoxo5.json").then(r => r.json())
-]).then(results => {
+    fetch("databkp/zoxo2.json").then(r=>r.json()),
+    fetch("databkp/zoxo1.json").then(r=>r.json()),
+    fetch("databkp/zoxo3.json").then(r=>r.json()),
+    fetch("databkp/zoxo4.json").then(r=>r.json()),
+    fetch("databkp/zoxo5.json").then(r=>r.json())
+]).then(results=>{
 
-    items = [];
+    items=[];
 
-    results.forEach(result => {
+    results.forEach(result=>{
 
-        if(result.status === "fulfilled"){
-
+        if(result.status==="fulfilled"){
             items.push(...result.value.reverse());
-
         }
 
     });
 
+    currentPage=1;
     render(items);
 
 }).catch(()=>{
 
-    gallery.innerHTML =
-    "<p style='padding:20px;color:#999'>Data tidak ditemukan.</p>";
+    gallery.innerHTML="<p style='padding:20px;color:#999'>Data tidak ditemukan.</p>";
 
 });
 
+}
+
+function loadIndo(){
+
+Promise.allSettled([
+    fetch("dataindo/soso2.json").then(r=>r.json()),
+    fetch("dataindo/soso1.json").then(r=>r.json()),
+    fetch("dataindo/soso3.json").then(r=>r.json()),
+    fetch("dataindo/soso4.json").then(r=>r.json()),
+    fetch("dataindo/soso5.json").then(r=>r.json())
+]).then(results=>{
+
+    items=[];
+
+    results.forEach(result=>{
+
+        if(result.status==="fulfilled"){
+            items.push(...result.value.reverse());
+        }
+
+    });
+
+    currentPage=1;
+    render(items);
+
+}).catch(()=>{
+
+    gallery.innerHTML="<p style='padding:20px;color:#999'>Data tidak ditemukan.</p>";
+
+});
+
+}  
+
+loadJapan();  
   
 function render(list){
 
@@ -787,7 +821,10 @@ if(code==="ID2026"){
 
 // Panggil data Indo di sini
 
+loadIndo();
+
 document.getElementById("accessMsg").textContent="✅ Access Granted";
+document.getElementById("accessCode").value="";
 
 }else{
 
