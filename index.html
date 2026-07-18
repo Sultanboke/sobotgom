@@ -451,7 +451,7 @@ const gallery = document.getElementById("gallery");
 const search = document.getElementById("search");
 const pagination = document.getElementById("pagination");
 
-let items = [];
+let currentList = [];
 
 const PER_PAGE = 30;
 let currentPage = 1;
@@ -468,18 +468,19 @@ Promise.allSettled([
     fetch("databkp/zoxo5.json").then(r=>r.json())
 ]).then(results=>{
 
-    items=[];
+items=[];
 
-    results.forEach(result=>{
+results.forEach(result=>{
 
-        if(result.status==="fulfilled"){
-            items.push(...result.value.reverse());
-        }
+    if(result.status==="fulfilled"){
+        items.push(...result.value.reverse());
+    }
 
-    });
+});
 
-    currentPage=1;
-    render(items);
+currentList = items;
+currentPage = 1;
+render(currentList);
 
 }).catch(()=>{
 
@@ -499,18 +500,19 @@ Promise.allSettled([
     fetch("dataindo/soso5.json").then(r=>r.json())
 ]).then(results=>{
 
-    items=[];
+items=[];
 
-    results.forEach(result=>{
+results.forEach(result=>{
 
-        if(result.status==="fulfilled"){
-            items.push(...result.value.reverse());
-        }
+    if(result.status==="fulfilled"){
+        items.push(...result.value.reverse());
+    }
 
-    });
+});
 
-    currentPage=1;
-    render(items);
+currentList = items;
+currentPage = 1;
+render(currentList);
 
 }).catch(()=>{
 
@@ -732,7 +734,7 @@ thumb.classList.add("viewed");
 
 }
     
-search.oninput=()=>{
+search.oninput = () => {
 
 currentPage = 1;
 
@@ -742,11 +744,11 @@ searchMode = q !== "";
 
 favoriteMode = false;
 
-render(
-items.filter(x=>
-(x.title||"").toLowerCase().startsWith(q)
-)
+currentList = items.filter(x =>
+    (x.title || "").toLowerCase().startsWith(q)
 );
+
+render(currentList);
 
 }
 
