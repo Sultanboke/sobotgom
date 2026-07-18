@@ -273,19 +273,37 @@ font-weight:800;
 color:#e50914;
 text-decoration:none;
 }
-.access-inline{
-width:75%;
-margin:18px auto 0;
+.access-card{
+margin:30px 18px;
+padding:22px;
+background:linear-gradient(180deg,#171717,#111);
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+.access-title{
+font-size:20px;
+font-weight:800;
+margin-bottom:8px;
+}
+
+.access-desc{
+font-size:13px;
+color:#aaa;
+margin-bottom:18px;
+line-height:1.5;
 }
 
 .access-input{
 display:flex;
 align-items:center;
-background:#161616;
+background:#0d0d0d;
 border:1px solid #2b2b2b;
 border-radius:14px;
 overflow:hidden;
-height:48px;
+height:50px;
 }
 
 .access-input input{
@@ -300,7 +318,7 @@ font-size:15px;
 }
 
 .access-input input::placeholder{
-color:#777;
+color:#666;
 }
 
 .access-input button{
@@ -312,7 +330,6 @@ border-radius:10px;
 background:#e50914;
 color:#fff;
 font-weight:700;
-font-size:14px;
 cursor:pointer;
 transition:.2s;
 }
@@ -322,9 +339,9 @@ background:#ff1f2d;
 }
 
 #accessMsg{
-margin-top:8px;
+margin-top:12px;
 font-size:13px;
-color:#999;
+color:#bbb;
 }
   
   
@@ -354,24 +371,6 @@ XFREEBOKEP
 <p>Update setiap hari</p>
 </section>
 
-<div class="access-inline">
-
-<div class="access-input">
-
-<input
-type="text"
-id="accessCode"
-placeholder="🔑 Enter Access Code">
-
-<button id="unlockBtn">
-Go
-</button>
-
-</div>
-
-<div id="accessMsg"></div>
-
-</div>  
   
 <div class="top-menu">
 
@@ -407,6 +406,34 @@ Go
 
 </div>
 
+<div class="access-card">
+
+<div class="access-title">
+🔒 Hidden Collection
+</div>
+
+<div class="access-desc">
+Enter your access code to unlock the exclusive collection.
+</div>
+
+<div class="access-input">
+
+<input
+type="text"
+id="accessCode"
+placeholder="Enter Access Code">
+
+<button id="unlockBtn">
+Unlock
+</button>
+
+</div>
+
+<div id="accessMsg"></div>
+
+</div>
+  
+  
 <div class="donation-box">
     <h3>❤️ Support This Website</h3>
     <p>Your donation helps us keep updating new content every day.</p>
