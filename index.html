@@ -400,10 +400,7 @@ XFREEBOKEP
 ❤️ My Favorites
 </a>
 
-<a href="#" class="menu-btn" onclick="event.preventDefault(); favoriteMode=false; searchMode=false; search.value=''; render(items);">
-🏠 All Content
-</a>
-
+<a href="#" class="menu-btn" onclick="event.preventDefault(); favoriteMode=false; searchMode=false; search.value=''; currentList=items; render(currentList);">🏠 All Content</a>
 </div>
 
 <div class="access-card">
@@ -451,6 +448,7 @@ const gallery = document.getElementById("gallery");
 const search = document.getElementById("search");
 const pagination = document.getElementById("pagination");
 
+let items = [];
 let currentList = [];
 
 const PER_PAGE = 30;
@@ -689,18 +687,20 @@ observer.observe(el);
 });
 
 }
+  
 function changePage(page){
 
 currentPage = page;
 
-render(items);
+render(currentList);
 
 window.scrollTo({
 top:0,
 behavior:"smooth"
 });
 
-  }
+}
+  
 let watched = {};
 
 function markWatched(){
